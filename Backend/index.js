@@ -1,6 +1,6 @@
 const app = require("./src/server");
 require("dotenv").config();
-const PORT = 3000;
+const PORT = 3001;
 
 const startServer = async () => {
   try {

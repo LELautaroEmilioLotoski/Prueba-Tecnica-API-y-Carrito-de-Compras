@@ -3,6 +3,8 @@ const { productService } = require("../services/productsService");
 const productsController = (req, res) => {
     try {
         const products = productService();
+        console.log(products);
+        
 
         if (!products || products.length === 0) {
             return res.status(404).json({ message: "algo salió mal" });

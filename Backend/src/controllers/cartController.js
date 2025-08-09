@@ -1,4 +1,4 @@
-const { cartService, cartProducts } = require("../services/cartService");
+const { cartService, cartProducts, updateCart } = require("../services/cartService");
 
 const cartPostController = async (req, res) => {
   const { id } = req.body;
@@ -6,6 +6,8 @@ const cartPostController = async (req, res) => {
   if (id) {
     try {
       const respuesta = await cartService(id);
+      console.log(respuesta);
+      
       res.json({ success: true, data: respuesta });
     } catch (error) {
       console.log("algo salió mal", error);
@@ -21,17 +23,33 @@ const cartGetProducts = async (req, res) => {
   try {
     const products = cartProducts();
 
-    if (!products || products.length === 0) {
-      return res.status(404).json({ message: "algo salió mal" });
+    if (!products) {
+      return res.status(500).json({ message: "Error al obtener los productos del carrito" });
     }
 
-    return res.status(200).json(products); // <-- poné return acá también
-
-    // console.log(respuesta); // --> sacalo o ponelo antes de return, y con la variable correcta
+    return res.status(200).json(products);
+    
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Error interno del servidor", error });
   }
 };
 
+const updateCartController = async(req, res) => {
+  try {
+    const carritoActualizado = await updateCart();
 
-module.exports = { cartPostController, cartGetProducts };
+        if (!carritoActualizado) {
+      return res.status(500).json({ message: "Error al obtener el carrito actualizado" });
+    }
+
+    return res.status(200).json(carritoActualizado);
+    
+  } catch (error) {
+    return res.status(500).json({ message: "Error interno del servidor", error });
+  }
+}
+
+
+
+module.exports = { cartPostController, cartGetProducts, updateCartController };

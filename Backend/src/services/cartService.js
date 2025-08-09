@@ -2,22 +2,27 @@ const { productos } = require("../dto/productos");
 const carrito = [];
 
 const cartService = (id) => {
-  const product = productos.find((p) => p.id === id);
-  console.log(product);
+  const product = productos.find((p) => {
+    return p.id === id;
+
+  })
 
   if (!product) {
-    return res.status(404).json({ error: "Producto no encontrado" });
+    return null;
   }
 
   carrito.push(product);
-
-  console.log("El contenido del carrito es:", carrito);
-
   return carrito;
 };
+
 
 const cartProducts = () => {
   return carrito;
-};
+}
 
-module.exports = { cartService, cartProducts };
+const updateCart = () => {
+  carrito.length = 0;
+  return carrito;
+}
+
+module.exports = { cartService, cartProducts, updateCart };
