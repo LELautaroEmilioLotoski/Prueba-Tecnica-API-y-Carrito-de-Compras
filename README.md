@@ -54,21 +54,26 @@ Una vez clonado el repositorio, por favor, prosigue con los siguientes pasos:
 
 6-Abre otra terminal (te recomiendo ahora sí hacerlo en la parte superior donde dice "Terminal" y hacerle click en "New terminal")
 
-7-Navega al directorio del frontend con el siguiente comando:
+7-Navega nuevamente al directorio del proyecto:
+```bash
+  cd Prueba-Tecnica-API-y-Carrito-de-Compras
+```
+
+8-Navega al directorio del frontend con el siguiente comando:
 
 ```bash
   cd Frontend
 ```
 
-8-Instala las dependencias del frontend (este proceso puede tardar de unos segundos a unos minutos dependiendo de tu procesador):
+9-Instala las dependencias del frontend (este proceso puede tardar de unos segundos a unos minutos dependiendo de tu procesador):
 ```bash
   npm i
 ```
-9-Levanta el frontend localmente en tu computadora con el siguiente comando (se levantará en el puerto 3000):
+10-Levanta el frontend localmente en tu computadora con el siguiente comando (se levantará en el puerto 3000):
 ```bash
   npm run dev
 ```
-10-¡Ya tienes la aplicación instalada y lista para probar 😄!
+¡Ya tienes la aplicación instalada y lista para probar 😄!
 
 
 
